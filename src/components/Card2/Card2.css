@@ -1,0 +1,91 @@
+.card2 {
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  width: 100%;
+  margin: 10px 0;
+  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+  background-color: #fff;
+}
+
+.card2-box {
+  display: flex;
+
+  width: 100%;
+}
+
+.card2-image {
+  background-color: black;
+  width: 100%;
+  max-width: 250px;
+  height: 200px;
+  object-fit: contain;
+
+  border-radius: 8px 0 0 8px;
+}
+
+.card2-content {
+  width: 100%;
+  padding: 10px;
+  color: #002f34;
+}
+
+.card2-title {
+  width: 100%;
+  font-size: 18px;
+  font-weight: bold;
+  color: #002f34;
+
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card2-brand {
+  font-size: 14px;
+  color: #888;
+  margin: 8px 0;
+  width: 100%;
+}
+
+.card2-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #002f34;
+  margin: 0;
+  width: 100%;
+}
+
+.card2-link {
+  text-decoration: none;
+}
+
+.card2-call-button {
+  padding: 9px;
+  margin: 5px 0;
+  border-radius: 5px;
+  width: 100px;
+  background-color: #fff;
+  border: 1px solid #002f34;
+  color: black;
+}
+.card2-call-button svg {
+  margin-right: 5px;
+}
+.card2-chat-button svg {
+  margin-right: 5px;
+}
+.card2-chat-button {
+  padding: 9px;
+  margin: 5px 0;
+  margin-left: 8px;
+  border-radius: 5px;
+  width: 100px;
+  background-color: #002f34;
+  border: 1px solid #002f34;
+  color: white;
+}
+.card2-timestamp {
+  width: 100%;
+  margin: 5px 0;
+}

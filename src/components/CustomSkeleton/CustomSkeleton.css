@@ -1,0 +1,11 @@
+.cuscard2 {
+  border: 1px solid #e1e1e1;
+
+  width: 900px;
+}
+.card2-callbutton {
+  display: flex;
+}
+.card2-callbutton p {
+  margin-right: 5px;
+}

@@ -1,0 +1,24 @@
+.back-to-top-button {
+  display: none;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid black;
+  cursor: pointer;
+  /* transition: opacity 0.3s; */
+  z-index: 1;
+}
+
+.back-to-top-button.visible {
+  display: block;
+  opacity: 1;
+}
+
+.back-to-top-button:hover {
+  border: 3px solid black;
+}

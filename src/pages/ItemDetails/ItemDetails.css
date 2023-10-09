@@ -1,0 +1,113 @@
+.item-details-container {
+  padding: 10px 50px;
+}
+.item-details-container h1,
+.item-details-container h2,
+.item-details-container h3,
+.item-details-container h4,
+.item-details-container h5,
+.item-details-container h6,
+.item-details-container p {
+  color: #002f34;
+  margin: 8px 0;
+}
+.ID-Section1 {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.ID-img-section {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  width: 60%;
+  padding: 10px;
+  background-color: black;
+  border: #002f34 1px solid;
+  border-radius: 5px;
+}
+.ID-img-section img {
+  max-width: 100%;
+}
+.ID-Section2 {
+  width: 35%;
+}
+.ID-Profile {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: #002f34 1px solid;
+  border-radius: 5px;
+}
+.ID-Profile img {
+  width: 25%;
+}
+.ID-Profile-Details {
+  cursor: pointer;
+  display: flex;
+}
+
+.ID-Profile-Account {
+  padding: 15px;
+}
+.ID-Profile-Account p {
+  margin: 10px 0;
+}
+.ID-Profile button {
+  margin-bottom: 15px;
+  background-color: #002f34;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  border: #002f34 1px solid;
+  height: 40px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.ID-Chat button {
+  background-color: white;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ID-Chat button:hover {
+  border: #002f34 3px solid;
+}
+
+.ID-Location {
+  padding: 10px;
+  border: #002f34 1px solid;
+  border-radius: 5px;
+}
+.ID-Location svg {
+  margin-right: 5px;
+}
+.ID-price {
+  margin: 15px 0;
+
+  width: 60%;
+  padding: 10px;
+  border: #002f34 1px solid;
+  border-radius: 5px;
+}
+.ID-details {
+  margin: 15px 0;
+
+  width: 60%;
+  padding: 10px;
+  border: #002f34 1px solid;
+  border-radius: 5px;
+}
+.ID-price svg {
+  margin-right: 5px;
+}
+.ID-description {
+  margin: 15px 0;
+
+  width: 60%;
+  padding: 10px;
+  border: #002f34 1px solid;
+  border-radius: 5px;
+}
