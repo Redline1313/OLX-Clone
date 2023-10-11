@@ -26,6 +26,7 @@ import CustomModal from "../CustomModal/CustomModal";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../config/firebase";
 import dropimg from "../../assets/drop.png";
+
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [user, setUser] = useState(null);
@@ -33,8 +34,19 @@ const Header = () => {
   const [showMegaMenu, setMegaMenu] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const [searchQuery, setSearchQuery] = useState("");
+
   const navigate = useNavigate();
 
+  const handleSearchSubmit = (event) => {
+    setSearchQuery(event.target.value);
+    // event.preventDefault();
+    // navigate(`/ViewMore?searchQuery=${encodeURIComponent(searchQuery)}`);
+  };
+  const handleSerach = () => {
+    navigate(`/ViewMore?searchQuery=${encodeURIComponent(searchQuery)}`);
+  };
   const handleShowMegaMenu = () => {
     setMegaMenu(!showMegaMenu);
   };
@@ -233,11 +245,14 @@ const Header = () => {
                   className="search"
                   type="search"
                   placeholder="Find Car, Mobile Phones and more..."
+                  value={searchQuery}
+                  onChange={handleSearchSubmit}
                 />
                 <FontAwesomeIcon
                   icon={faSearch}
                   className="glass"
                   style={{ fontSize: "26px", color: "white" }}
+                  onClick={handleSerach}
                 />
               </div>
 

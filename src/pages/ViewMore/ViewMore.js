@@ -1,5 +1,6 @@
 import { faFigma } from "@fortawesome/free-brands-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import NoData from "../../assets/not-found.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import "./ViewMore.css";
@@ -11,6 +12,7 @@ import BackToTopButton from "../../components/BackToTopButton/BackToTopButton";
 import "react-loading-skeleton/dist/skeleton.css";
 import CustomSkeleton2 from "../../components/CustomSkeleton/CustomSkeleton2";
 import { useLocation } from "react-router-dom";
+import queryString from "query-string";
 
 const ViewMore = () => {
   const [products, setProducts] = useState([]);
@@ -22,6 +24,8 @@ const ViewMore = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const selectedCategory = queryParams.get("category");
+  const queryParmasSearch = queryString.parse(location.search);
+  const searchQuery = queryParmasSearch.searchQuery || "";
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -47,6 +51,29 @@ const ViewMore = () => {
 
     fetchProducts();
   }, []);
+
+  const filterProducts = () => {
+    let filtered = [...products];
+
+    if (selectedCategory) {
+      filtered = filtered.filter(
+        (product) => product.category === selectedCategory
+      );
+    }
+
+    filtered = filtered.filter((product) => {
+      const productTitle = product.title.toLowerCase();
+      return productTitle.includes(searchQuery.toLowerCase());
+    });
+
+    filtered = filtered.filter((product) => {
+      const productPrice = parseFloat(product.price);
+      return productPrice >= minPrice && productPrice <= maxPrice;
+    });
+
+    return filtered;
+  };
+
   const handleSortChange = (event) => {
     const selectedSortOption = event.target.value;
     setSortBy(selectedSortOption);
@@ -64,13 +91,6 @@ const ViewMore = () => {
     setProducts(sortedProducts);
   };
 
-  const filterProductsByPrice = () => {
-    return products.filter((product) => {
-      const productPrice = parseFloat(product.price);
-      return productPrice >= minPrice && productPrice <= maxPrice;
-    });
-  };
-
   const handlePriceRangeChange = (event) => {
     const { name, value } = event.target;
     if (name === "minPrice") {
@@ -79,15 +99,30 @@ const ViewMore = () => {
       setMaxPrice(parseFloat(value));
     }
   };
+
   const toggleDisplayCard2 = () => {
     setDisplayCard2(!displayCard2);
   };
 
-  // const filteredProducts = filterProductsByPrice();
-  // debugger;
-  const filteredProducts = products.filter(
-    (product) => product.category === selectedCategory
-  );
+  const filteredProducts = filterProducts();
+  const highlightSearchQuery = (text) => {
+    if (!searchQuery) return text;
+
+    const regex = new RegExp(`(${searchQuery})`, "gi");
+
+    return text.split(regex).map((part, index) => {
+      if (regex.test(part)) {
+        return (
+          <span className="highlighted" key={index}>
+            {part}
+          </span>
+        );
+      }
+
+      return part;
+    });
+  };
+
   return (
     <div className="ViewMore-Wrapper">
       <h2>Mobile Phones in Pakistan</h2>
@@ -200,39 +235,48 @@ const ViewMore = () => {
           </div>
           <div className="line"></div>
           <div className="Display-Cards">
-            {isLoading
-              ? Array.from({ length: 10 }, (_, index) => (
-                  <div key={index} className="Card-Skeleton">
-                    <CustomSkeleton2 />
-                  </div>
-                ))
-              : displayCard2
-              ? filteredProducts.map((product, index) => (
-                  <Card2
-                    key={index}
+            {isLoading ? (
+              // <div>Loading...</div>
+              <CustomSkeleton2 />
+            ) : filteredProducts.length === 0 ? (
+              <div className="Display-Cards-NoData">
+                <h2>
+                  Oops... we didn't find anything that matches this search
+                </h2>
+                <p>
+                  Try to search for something more general, change the filters
+                  or check for spelling mistakes
+                </p>
+                <img src={NoData} alt="No Data Found" />
+              </div>
+            ) : displayCard2 ? (
+              filteredProducts.map((product, index) => (
+                <Card2
+                  key={index}
+                  itemId={product.itemId}
+                  image={product.imageUrl}
+                  price={highlightSearchQuery(product.price)}
+                  title={highlightSearchQuery(product.title)}
+                  brand={highlightSearchQuery(product.brand)}
+                  location={highlightSearchQuery(product.location)}
+                  timestamp={product.timestamp}
+                />
+              ))
+            ) : (
+              filteredProducts.map((product, index) => (
+                <div className="Display-Cards2" key={index}>
+                  <Cards
                     itemId={product.itemId}
                     image={product.imageUrl}
-                    price={product.price}
-                    title={product.title}
-                    brand={product.brand}
-                    location={product.location}
+                    price={highlightSearchQuery(product.price)}
+                    title={highlightSearchQuery(product.title)}
+                    brand={highlightSearchQuery(product.brand)}
+                    location={highlightSearchQuery(product.location)}
                     timestamp={product.timestamp}
                   />
-                ))
-              : filteredProducts.map((product, index) => (
-                  <div className="Display-Cards2">
-                    <Cards
-                      key={index}
-                      itemId={product.itemId}
-                      image={product.imageUrl}
-                      price={product.price}
-                      title={product.title}
-                      brand={product.brand}
-                      location={product.location}
-                      timestamp={product.timestamp}
-                    />
-                  </div>
-                ))}
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

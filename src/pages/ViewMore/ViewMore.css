@@ -133,3 +133,18 @@
   margin-right: 10px;
   width: 30%;
 }
+.Display-Cards-NoData {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.Display-Cards-NoData img {
+  margin-top: 20px;
+  /* width: 40%; */
+}
+.highlighted {
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+}
