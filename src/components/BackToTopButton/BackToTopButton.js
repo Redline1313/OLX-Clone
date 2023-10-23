@@ -31,8 +31,10 @@ const BackToTopButton = () => {
       className={`back-to-top-button ${isVisible ? "visible" : ""}`}
       onClick={scrollToTop}
     >
-      <FontAwesomeIcon icon={faAngleUp} />
-      Back to Top
+      <p>
+        <FontAwesomeIcon icon={faAngleUp} />
+        Back to Top
+      </p>
     </div>
   );
 };

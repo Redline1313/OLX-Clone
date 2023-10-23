@@ -74,18 +74,21 @@ const Footer = () => {
           </div>
           <div class="footer-section">
             <h3>Follow Us</h3>
-            <a href="#">
-              <FontAwesomeIcon icon={faFacebook} />
-            </a>
-            <a href="#">
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-            <a href="#">
-              <FontAwesomeIcon icon={faYoutube} />
-            </a>
-            <a href="#">
-              <FontAwesomeIcon icon={faLinkedin} />
-            </a>
+
+            <div className="foot-social">
+              <a href="#">
+                <FontAwesomeIcon icon={faFacebook} />
+              </a>
+              <a href="#">
+                <FontAwesomeIcon icon={faTwitter} />
+              </a>
+              <a href="#">
+                <FontAwesomeIcon icon={faYoutube} />
+              </a>
+              <a href="#">
+                <FontAwesomeIcon icon={faLinkedin} />
+              </a>
+            </div>
             <div className="badge">
               <a href="https://play.google.com/store/games">
                 <img src={box} alt="Box" />

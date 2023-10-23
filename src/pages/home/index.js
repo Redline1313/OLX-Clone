@@ -25,10 +25,12 @@ import { CustomSkeleton } from "../../components/CustomSkeleton/CustomSkeleton";
 
 function Home() {
   const [products, setProducts] = useState([]);
-  const limitedProducts = products.slice(0, 10);
+  // const limitedProducts = products.slice(0, 4);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const fetchProducts = async () => {
       try {
         const productsRef = collection(db, "items");
@@ -51,36 +53,36 @@ function Home() {
     fetchProducts();
   }, []);
 
-  const mobilePhoneProducts = limitedProducts.filter(
-    (product) => product.category === "Mobiles"
-  );
-  const bikesProducts = limitedProducts.filter(
-    (product) => product.category === "Vehicles"
-  );
-  const housesProducts = limitedProducts.filter(
-    (product) => product.category === "Property for Sale"
-  );
-  const rentProducts = limitedProducts.filter(
-    (product) => product.category === "Property for Rent"
-  );
-  const homeAppliancesProducts = limitedProducts.filter(
-    (product) => product.category === "Electronics & Home Appliances"
-  );
-  const animalProducts = limitedProducts.filter(
-    (product) => product.category === "Animals"
-  );
-  const decorProducts = limitedProducts.filter(
-    (product) => product.category === "Furniture & Home Decor"
-  );
-  const fashionProducts = limitedProducts.filter(
-    (product) => product.category === "Fashion & Beauty"
-  );
-  const hobbiesProducts = limitedProducts.filter(
-    (product) => product.category === "Books, Sports & Hobbies"
-  );
-  const kidsProducts = limitedProducts.filter(
-    (product) => product.category === "Kids"
-  );
+  const mobilePhoneProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Mobiles");
+  const bikesProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Vehicles");
+  const housesProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Property for Sale");
+  const rentProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Property for Rent");
+  const homeAppliancesProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Electronics & Home Appliances");
+  const animalProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Animals");
+  const decorProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Furniture & Home Decor");
+  const fashionProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Fashion & Beauty");
+  const hobbiesProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Books, Sports & Hobbies");
+  const kidsProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Kids");
 
   const updateCollection = async (itemId, newData) => {
     const itemDocRef = doc(db, "items", itemId);
@@ -101,9 +103,7 @@ function Home() {
         </div>
       </div>
       <div className="cat-area">
-        <h2>
-          <b>All categories </b>
-        </h2>
+        <h2>All categories</h2>
         <div className="cat-card-area">
           <div className="cat-card">
             <Link to={`/ViewMore?category=Mobiles`}>
@@ -170,13 +170,13 @@ function Home() {
 
       <div className="Mobile-area">
         <div className="Mobile-area-title">
-          <h3>Mobile Phone</h3>
+          <h2>Mobile Phone</h2>
           <p>
             <Link to={`/ViewMore?category=Mobiles`}>
               View more
               <FontAwesomeIcon
                 icon={faAngleRight}
-                style={{ color: "white", margin: "0 0 0 5px" }}
+                style={{ color: "blue", margin: "0 0 0 5px" }}
               />
             </Link>
           </p>
@@ -202,13 +202,13 @@ function Home() {
       </div>
       <div className="Mobile-area">
         <div className="Mobile-area-title">
-          <h3>House for Sale</h3>
+          <h2>House for Sale</h2>
           <p>
             <Link to={`/ViewMore?category=Property for Sale`}>
               View more
               <FontAwesomeIcon
                 icon={faAngleRight}
-                style={{ color: "white", margin: "0 0 0 5px" }}
+                style={{ color: "blue", margin: "0 0 0 5px" }}
               />
             </Link>
           </p>
@@ -234,13 +234,13 @@ function Home() {
       </div>
       <div className="Mobile-area">
         <div className="Mobile-area-title">
-          <h3>Animals</h3>
+          <h2>Animals</h2>
           <p>
             <Link to={`/ViewMore?category=Animals`}>
               View more
               <FontAwesomeIcon
                 icon={faAngleRight}
-                style={{ color: "white", margin: "0 0 0 5px" }}
+                style={{ color: "blue", margin: "0 0 0 5px" }}
               />
             </Link>
           </p>
@@ -266,7 +266,7 @@ function Home() {
       </div>
       <div className="Mobile-area">
         <div className="Mobile-area-title">
-          <h3>Kids Products</h3>
+          <h2>Kids Products</h2>
           <p>
             <Link to={`/ViewMore?category=Kids`}>
               View more

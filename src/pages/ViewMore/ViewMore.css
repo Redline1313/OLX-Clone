@@ -31,6 +31,9 @@
 .box-Categories li {
   margin: 15px 0 15px 15px;
 }
+.box-Categories a {
+  color: black;
+}
 .box-Sell {
   padding: 20px;
   color: white;
@@ -131,7 +134,7 @@
 }
 .Display-Cards2 {
   margin-right: 10px;
-  width: 30%;
+  width: 31%;
 }
 .Display-Cards-NoData {
   margin-top: 100px;

@@ -19,6 +19,7 @@ import {
   faCreditCard,
   faSpinner,
   faBars,
+  faClose,
 } from "@fortawesome/free-solid-svg-icons";
 import logoblack from "../../assets/OLX-Logo-black.webp";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -34,15 +35,12 @@ const Header = () => {
   const [showMegaMenu, setMegaMenu] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
   const [searchQuery, setSearchQuery] = useState("");
 
   const navigate = useNavigate();
 
   const handleSearchSubmit = (event) => {
     setSearchQuery(event.target.value);
-    // event.preventDefault();
-    // navigate(`/ViewMore?searchQuery=${encodeURIComponent(searchQuery)}`);
   };
   const handleSerach = () => {
     navigate(`/ViewMore?searchQuery=${encodeURIComponent(searchQuery)}`);
@@ -94,6 +92,9 @@ const Header = () => {
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
 
   return (
     <>
@@ -101,95 +102,126 @@ const Header = () => {
         <div className={`top-bar ${sidebarOpen ? "sidebar-open" : ""}`}>
           {sidebarOpen && (
             <div className="sidebar">
-              <div className="top-bar-item login">
+              <button className="sidebar-close-button" onClick={closeSidebar}>
+                <FontAwesomeIcon icon={faClose} />
+              </button>
+
+              <div className="side-login">
                 {user ? (
-                  <div className="Logged-in">
-                    <div className=" Log-icon log-comment">
-                      <FontAwesomeIcon icon={faComment} />
-                    </div>
-                    <div className="Log-icon log-bell">
-                      <FontAwesomeIcon icon={faBell} />
-                    </div>
-                    <div className=" Log-icon log-user dropdown">
+                  <div className="side-Logged-in">
+                    <>
                       {loggingOut ? (
                         <div className="loading-spinner">
-                          <FontAwesomeIcon icon={faSpinner} />
                           <div className="loader"></div>
                         </div>
                       ) : (
-                        <img
-                          src={profileimg}
-                          width={35}
-                          onClick={handleProfileMenuDown}
-                        />
+                        <>
+                          <div className="side-username">
+                            <img
+                              src={profileimg}
+                              onClick={handleProfileMenuDown}
+                            />
+
+                            <div>
+                              <p>{user.displayName}</p>
+                              <br />
+                              <Link>Edit Profile</Link>
+                            </div>
+                          </div>
+                          <div className="line"></div>
+                          <div className="side-log-comment">
+                            <button>
+                              <FontAwesomeIcon icon={faComment} />
+                              Chat
+                            </button>
+                          </div>
+
+                          <div className="side-log-bell">
+                            <button>
+                              <FontAwesomeIcon icon={faBell} />
+                              Notification
+                            </button>
+                          </div>
+
+                          <button
+                            className="side-sell-button"
+                            onClick={handleSellClick}
+                          >
+                            <Link to="/">
+                              <FontAwesomeIcon icon={faAdd} /> Sell
+                            </Link>
+                          </button>
+                          <div className="line"></div>
+                        </>
                       )}
-                      {showProfile && (
-                        <div className="profile-dropdown">
-                          <ul className="menu">
-                            <div className="line" />
-                            <li className="menu-item">
-                              <button>
-                                <FontAwesomeIcon icon={faBagShopping} />
-                                My Ads
-                              </button>
-                            </li>
-                            <li className="menu-item">
-                              <button>
-                                <FontAwesomeIcon icon={faHeart} />
-                                Favourites
-                              </button>
-                            </li>
-                            <li className="menu-item">
-                              <button>
-                                <FontAwesomeIcon icon={faClipboard} />
-                                Buy business
-                              </button>
-                            </li>
-                            <li className="menu-item">
-                              <button>
-                                <FontAwesomeIcon icon={faCreditCard} />
-                                Bought
-                              </button>
-                            </li>
-                            <li className="menu-item">
-                              <button>
-                                <FontAwesomeIcon icon={faInfo} />
-                                Help
-                              </button>
-                            </li>
-                            <li className="menu-item">
-                              <button>
-                                <Link to="/ChangePassword">
-                                  <FontAwesomeIcon icon={faSliders} />
-                                  Setting
-                                </Link>
-                              </button>
-                            </li>
-                            <div className="line" />
-                            <li>
-                              <button onClick={handleLogout}>
-                                <FontAwesomeIcon icon={faRightFromBracket} />
-                                Logout
-                              </button>
-                            </li>
-                          </ul>
-                        </div>
-                      )}
-                    </div>
+
+                      <div className="side-ul">
+                        <button>
+                          <FontAwesomeIcon icon={faBagShopping} />
+                          My Ads
+                        </button>
+
+                        <button>
+                          <FontAwesomeIcon icon={faHeart} />
+                          Favourites
+                        </button>
+                        <button>
+                          <FontAwesomeIcon icon={faClipboard} />
+                          Buy business
+                        </button>
+                        <button>
+                          <FontAwesomeIcon icon={faCreditCard} />
+                          Bought
+                        </button>
+                        <button>
+                          <FontAwesomeIcon icon={faInfo} />
+                          Help
+                        </button>
+                        <button>
+                          <Link to="/ChangePassword">
+                            <FontAwesomeIcon icon={faSliders} />
+                            Setting
+                          </Link>
+                        </button>
+                      </div>
+                      <div className="line"></div>
+                      <button onClick={handleLogout}>
+                        <FontAwesomeIcon icon={faRightFromBracket} />
+                        Logout
+                      </button>
+                    </>
                   </div>
                 ) : (
-                  <button onClick={openModal} className="login-link">
-                    Login
-                  </button>
-                )}
-              </div>
+                  <>
+                    <div className="side-log-comment">
+                      <button>
+                        <FontAwesomeIcon icon={faComment} />
+                        Chat
+                      </button>
+                    </div>
 
-              <div className="top-bar-item ">
-                <button className="sell-button" onClick={handleSellClick}>
-                  <Link to="/">
-                    <FontAwesomeIcon icon={faAdd} /> Sell
-                  </Link>
-                </button>
+                    <div className="side-log-bell">
+                      <button>
+                        <FontAwesomeIcon icon={faBell} />
+                        Notification
+                      </button>
+                    </div>
+
+                    <button
+                      className="side-sell-button"
+                      onClick={handleSellClick}
+                    >
+                      <Link to="/">
+                        <FontAwesomeIcon icon={faAdd} /> Sell
+                      </Link>
+                    </button>
+                    <div>
+                      <button onClick={openModal} className="side-login-link">
+                        Login
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           )}
@@ -271,10 +303,9 @@ const Header = () => {
                         style={{ fontSize: "25px" }}
                       />
                     </div>
-                    <div className=" Log-icon log-user dropdown">
+                    <div className=" Log-icon log-user dropdown-img">
                       {loggingOut ? (
                         <div className="loading-spinner">
-                          <FontAwesomeIcon icon={faSpinner} />
                           <div className="loader"></div>
                         </div>
                       ) : (
@@ -287,6 +318,18 @@ const Header = () => {
                       {showProfile && (
                         <div className="profile-dropdown">
                           <ul className="menu">
+                            <div className="side-username">
+                              <img
+                                src={profileimg}
+                                onClick={handleProfileMenuDown}
+                              />
+
+                              <div>
+                                <p>{user.displayName}</p>
+                                <br />
+                                <Link>Edit Profile</Link>
+                              </div>
+                            </div>
                             <div className="line" />
                             <li className="menu-item">
                               <button>

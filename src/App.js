@@ -15,6 +15,7 @@ import { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import SellerProfile from "./pages/SellerProfile/SellerProfile";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/ViewMore" element={<ViewMore />} />
             <Route path="/ChangePassword" element={<ChangePassword />} />
             <Route path="/category" element={<Category />} />
+            <Route path="/seller/:uid" element={<SellerProfile />} />
           </Routes>
           <Footer />
         </BrowserRouter>

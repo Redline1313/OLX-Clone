@@ -111,3 +111,146 @@
   border: #002f34 1px solid;
   border-radius: 5px;
 }
+
+@media screen and (max-width: 1025px) {
+  .item-details-container {
+    padding: 10px 50px;
+  }
+  .ID-Section1 {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .ID-img-section {
+    display: flex;
+    justify-content: center;
+    height: 500px;
+    width: 100%;
+    padding: 0;
+    background-color: black;
+    border: #002f34 1px solid;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .ID-img-section img {
+    width: 50%;
+  }
+  .ID-Section2 {
+    width: 100%;
+  }
+  .ID-Profile {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: #002f34 1px solid;
+    border-radius: 5px;
+  }
+  .ID-Profile img {
+    width: 25%;
+  }
+  .ID-Profile-Details {
+    cursor: pointer;
+    display: flex;
+  }
+
+  .ID-Profile-Account {
+    padding: 15px;
+  }
+  .ID-Profile-Account p {
+    margin: 10px 0;
+  }
+  .ID-Profile button {
+    margin-bottom: 15px;
+    background-color: #002f34;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    border: #002f34 1px solid;
+    height: 40px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+
+  .ID-Chat button {
+    background-color: white;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ID-Chat button:hover {
+    border: #002f34 3px solid;
+  }
+
+  .ID-Location {
+    padding: 10px;
+    border: #002f34 1px solid;
+    border-radius: 5px;
+  }
+  .ID-Location svg {
+    margin-right: 5px;
+  }
+  .ID-pad {
+    padding: 10px;
+  }
+  .ID-price {
+    margin: 0;
+
+    width: 100%;
+    padding: 0;
+    border: #002f34 1px solid;
+    border-radius: 5px;
+  }
+  .ID-details {
+    margin: 15px 0;
+
+    width: 100%;
+    padding: 0;
+    border: #002f34 1px solid;
+    border-radius: 5px;
+  }
+  .ID-price svg {
+    margin-right: 5px;
+  }
+  .ID-description {
+    margin: 15px 0;
+
+    width: 100%;
+    padding: 0;
+    border: #002f34 1px solid;
+    border-radius: 5px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .item-details-container {
+    padding: 10px 50px;
+  }
+
+  .ID-img-section {
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    width: 100%;
+    padding: 0;
+    background-color: black;
+    border: #002f34 1px solid;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .ID-img-section img {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .item-details-container {
+    padding: 10px;
+  }
+  .ID-img-section img {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .ID-img-section img {
+    width: 90%;
+  }
+}

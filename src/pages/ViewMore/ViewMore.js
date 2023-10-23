@@ -105,6 +105,7 @@ const ViewMore = () => {
   };
 
   const filteredProducts = filterProducts();
+
   const highlightSearchQuery = (text) => {
     if (!searchQuery) return text;
 
@@ -122,10 +123,15 @@ const ViewMore = () => {
       return part;
     });
   };
+  const numberOfAds = filteredProducts.length;
 
   return (
     <div className="ViewMore-Wrapper">
-      <h2>Mobile Phones in Pakistan</h2>
+      <h2>
+        {selectedCategory
+          ? `${selectedCategory} in Pakistan`
+          : "All Categories in Pakistan"}
+      </h2>
 
       <div className="Container-ViewMore">
         <div className="Sidebar">
@@ -136,18 +142,20 @@ const ViewMore = () => {
             <ul>
               <a href="#"> All Categories</a>
               <li>
-                <a href="">Mobiles</a>
                 <a href="#">
-                  <li>Mobile Phone</li>
+                  <li>Mobiles</li>
                 </a>
                 <a href="#">
-                  <li>Accessories</li>
+                  <li>vehicles</li>
                 </a>
                 <a href="#">
-                  <li>Smart Watches</li>
+                  <li>Animals</li>
                 </a>
                 <a href="#">
-                  <li>Tablets</li>
+                  <li>Electronice Appliances</li>
+                </a>
+                <a href="#">
+                  <li>Kids</li>
                 </a>
               </li>
             </ul>
@@ -172,7 +180,7 @@ const ViewMore = () => {
               value={minPrice}
               onChange={handlePriceRangeChange}
               min="0"
-              max="1000000"
+              max="100000"
             />
             <input
               type="range"
@@ -207,7 +215,7 @@ const ViewMore = () => {
         <div className="Main-Section">
           <div className="Main-top-bar">
             <div className="Main-top-bar-ads">
-              <p>10,000+ ads</p>
+              <p>{numberOfAds} ads</p>
             </div>
             <div className="Main-top-bar left-bar">
               <p>view</p>

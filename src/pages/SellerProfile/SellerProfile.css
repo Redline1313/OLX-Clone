@@ -1,0 +1,115 @@
+.seller-profile-container {
+  display: flex;
+  padding: 20px;
+  margin: 20px;
+}
+
+.seller-profile-info {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.seller-profile-img {
+  width: 60%;
+}
+
+.seller-profile-stats {
+  margin: 10px 0;
+}
+.seller-profile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.seller-profile-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.seller-profile-actions button {
+  margin-bottom: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 15px 34px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  display: flex;
+}
+.seller-link {
+  display: flex;
+}
+
+.report-link,
+.block-link {
+  color: blue;
+  font-weight: bold;
+}
+.report-link {
+  margin-right: 10px;
+}
+.seller-profile-items {
+  width: 100%;
+}
+.seller-profile-items h3 {
+  font-size: 24px;
+}
+.seller-profit-cards {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 854px) {
+  .seller-profile-container {
+    display: block;
+  }
+  .seller-profile-info {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .seller-profile-items {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .seller-profile-items h3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .seller-profit-cards {
+    margin: 10px 0;
+  }
+  .seller-cards {
+    margin-right: 12px;
+    width: 31%;
+  }
+}
+@media screen and (max-width: 739px) {
+  .seller-profit-cards {
+    margin: 10px 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .seller-cards {
+    display: flex;
+    justify-content: center;
+    margin-right: 12px;
+    width: 48%;
+  }
+}
+@media screen and (max-width: 677px) {
+  .seller-cards {
+    display: flex;
+    justify-content: center;
+    margin-right: 12px;
+    width: 100%;
+  }
+}

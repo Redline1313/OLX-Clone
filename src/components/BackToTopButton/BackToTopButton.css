@@ -10,7 +10,6 @@
   border-radius: 50px;
   border: 1px solid black;
   cursor: pointer;
-  /* transition: opacity 0.3s; */
   z-index: 1;
 }
 
@@ -21,4 +20,18 @@
 
 .back-to-top-button:hover {
   border: 3px solid black;
+}
+@media screen and (max-width: 843px) {
+  .back-to-top-button {
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 50px;
+    border: 1px solid black;
+    cursor: pointer;
+    z-index: 1;
+  }
 }

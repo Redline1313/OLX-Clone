@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
@@ -10,11 +10,18 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
+  const [username, setUsername] = useState("");
 
   const handleSignUp = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await updateProfile(userCredential.user, {
+        displayName: username,
+      });
       setSuccessMessage("You have successfully signed up!");
       navigate("/login");
     } catch (error) {
@@ -38,6 +45,14 @@ const SignUp = () => {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          required
+          className="signup-input"
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <input
           required

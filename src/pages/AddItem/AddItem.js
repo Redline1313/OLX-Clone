@@ -9,6 +9,7 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import BackToTopButton from "../../components/BackToTopButton/BackToTopButton";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 const conditionOptions = [
   "New",
   "Open Box",
@@ -36,6 +37,20 @@ const AddItem = () => {
   const [mobileNumber, setMobileNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const [uid, setUid] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    const auth = getAuth();
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUid(user.uid);
+      }
+    });
+  }, []);
+
   useEffect(() => {
     if (initialCategory) {
       setCategory(initialCategory);
@@ -52,6 +67,8 @@ const AddItem = () => {
       const imageUrl = await getDownloadURL(imageRef);
 
       await addDoc(path, {
+        uid: uid,
+
         category: category,
         title: title,
         description: description,
@@ -64,8 +81,6 @@ const AddItem = () => {
         timestamp: serverTimestamp(),
       });
       toast.success("Item added successfully!");
-
-      // alert("Item added successfully!");
     } catch (error) {
       console.error("Error adding item:", error);
       alert("An error occurred while adding the item");
@@ -82,8 +97,8 @@ const AddItem = () => {
 
   return (
     <div className="add-item-container">
-      <h2 className="add-item-title">Add Item</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 className="add-item-title">POST YOUR AD</h2>
+      <form onSubmit={handleSubmit} className="add-form">
         <label className="form-label">
           Category:
           <input
@@ -104,11 +119,10 @@ const AddItem = () => {
             required
           />
         </label>
-        <label className="form-label descrip">
+        <label className="form-label">
           Description:
           <textarea
             className="form-textarea"
-            type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
@@ -127,7 +141,7 @@ const AddItem = () => {
         <label className="form-label">
           Condition:
           <select
-            className="form-input"
+            className="form-select"
             value={condition}
             onChange={(e) => setCondition(e.target.value)}
             required
@@ -173,7 +187,7 @@ const AddItem = () => {
           Mobile Number:
           <input
             className="form-input"
-            type="tel"
+            type="number"
             value={mobileNumber}
             onChange={(e) => setMobileNumber(e.target.value)}
             required
@@ -188,7 +202,7 @@ const AddItem = () => {
               />
             </i>
           ) : (
-            "Submit"
+            "Post now"
           )}
         </button>
       </form>

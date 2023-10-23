@@ -18,7 +18,6 @@ const Cards = ({ itemId, image, price, title, brand, timestamp }) => {
     <div className="card">
       <Link to={`/item/${itemId}`} className="card-link">
         <img className="card-image" src={image} alt={title} />
-        <div className="line"></div>
         <div className="card-content">
           <p className="card-price">Rs {price}</p>
           <p className="card-name">{title}</p>

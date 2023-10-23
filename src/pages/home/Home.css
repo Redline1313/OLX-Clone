@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
 .container {
   background-color: #fff;
 }
@@ -16,24 +10,22 @@
 .cat-card-area {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .cat-area {
   padding: 10px 40px;
   background-color: #fff;
 }
-.cat-card h2 {
-  background-color: #fff;
-}
 .cat-card {
   margin: 20px;
   width: 100%;
   max-width: 9%;
-
   text-align: center;
 }
+
 .cat-card a > img {
-  width: 80px;
+  width: 90%;
 }
 
 .Mobile-area {
@@ -77,5 +69,59 @@
   }
   .AD-Box {
     display: flex;
+  }
+}
+@media screen and (max-width: 908px) {
+  .cat-card-area {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .cat-card {
+    width: 100%;
+    max-width: 10%;
+    text-align: center;
+  }
+  .cat-card h4 {
+    background-color: #fff;
+    font-size: medium;
+  }
+  .cat-card a > img {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 690px) {
+  .cat-area h2 {
+    font-size: 20px;
+  }
+  .cat-card {
+    margin: 20px;
+    width: 100%;
+    max-width: 13%;
+    text-align: center;
+  }
+  .cat-card h4 {
+    background-color: #fff;
+    font-size: 13px;
+  }
+  .cat-card a > img {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 483px) {
+  .cat-card {
+    margin: 20px;
+    width: 100%;
+    max-width: 15%;
+    text-align: center;
+  }
+  .cat-card h4 {
+    background-color: #fff;
+    font-size: 12px;
+  }
+  .cat-card a > img {
+    width: 100%;
   }
 }
