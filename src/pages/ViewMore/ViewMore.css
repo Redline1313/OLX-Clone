@@ -76,10 +76,7 @@
   justify-content: space-between;
   align-items: center;
 }
-/* .Main-top-bar-ads {
-    margin-bottom: 5px;
-    padding: 2px;
-  } */
+
 .Main-top-bar-ads p {
   padding: 5px;
   border-radius: 5px;
@@ -119,9 +116,6 @@
   border: none;
   padding: 5px;
 
-  /* background: rgb(194, 222, 209) */
-  /* border: 3px solid rgb(84, 73, 116); */
-
   font-size: small;
 }
 
@@ -156,6 +150,132 @@
   color: black;
   font-weight: bold;
 }
+/* //////////////\\\\\\\\\\\\\\\ */
+.sort-filter-button {
+  display: none;
+}
+.sort-filter-button button {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #002f34;
+  border: none;
+}
+
+.sort-filter-container {
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100vh;
+}
+.Close-Filter button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.Filter-Sidebar {
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.Filter-box-Categories h3 {
+  margin: 0;
+  color: #002f34;
+  margin-bottom: 10px;
+}
+
+.Filter-box-Categories ul {
+  list-style: none;
+  color: #002f34;
+  padding: 0;
+}
+
+.Filter-box-Categories li {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+.Filter-box-Categories a {
+  color: #002f34;
+}
+.Filter-box-location h3 {
+  margin-bottom: 10px;
+}
+.Filter-box-location select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.Filter-box-price h3 {
+  margin: 10px 0 5px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.Filter-box-price p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.Filter-box-price input[type="range"] {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.Filter-cardsType {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.sort-filter-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: #002f34 1px solid;
+  padding: 10px;
+}
+.SFI:hover {
+  border: #002f34 2px solid;
+}
+
+.Filter-cardsType select {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+.Filter-list {
+  display: flex;
+  justify-content: center;
+}
+.Filter-list select {
+  padding: 15px;
+  /* width: 50%; */
+}
+.Filter-list option {
+  padding: 15px;
+}
+.sort-filter-button-close {
+  display: flex;
+  justify-content: center;
+}
+.sort-filter-button-close button {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #002f34;
+  border: none;
+}
+
 @media screen and (max-width: 1320px) {
   @media screen and (max-width: 1226px) {
     .ViewMore-Wrapper {
@@ -180,7 +300,17 @@
   .ViewMore-Wrapper {
     margin: 10px;
   }
-  .box-Sell {
+
+  .Main-Section {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .sort-filter-button {
+    display: block;
+  }
+  .left-bar,
+  .box-Sell,
+  .Sidebar {
     display: none;
   }
 }

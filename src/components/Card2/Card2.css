@@ -107,8 +107,19 @@
 @media screen and (max-width: 460px) {
   .card2-image {
     width: 100%;
+    max-width: 150px;
+    height: 150px;
+    object-fit: contain;
+  }
+}
+@media screen and (max-width: 388px) {
+  .card2-image {
+    width: 100%;
     max-width: 100px;
     height: 150px;
     object-fit: contain;
+  }
+  .card2-content {
+    font-size: 14px;
   }
 }

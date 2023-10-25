@@ -1,5 +1,10 @@
 import { faFigma } from "@fortawesome/free-brands-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faClose,
+  faGear,
+  faGears,
+} from "@fortawesome/free-solid-svg-icons";
 import NoData from "../../assets/not-found.webp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
@@ -21,12 +26,17 @@ const ViewMore = () => {
   const [maxPrice, setMaxPrice] = useState(1000000);
   const [displayCard2, setDisplayCard2] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const [show, setIsShow] = useState(false);
+
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const selectedCategory = queryParams.get("category");
   const queryParmasSearch = queryString.parse(location.search);
   const searchQuery = queryParmasSearch.searchQuery || "";
 
+  const closeFilter = () => {
+    setIsShow(false);
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -211,6 +221,15 @@ const ViewMore = () => {
                 <b>{numberOfAds} ads</b>
               </p>
             </div>
+            <div className="sort-filter-button">
+              <button onClick={() => setIsShow(true)}>
+                <FontAwesomeIcon
+                  icon={faGears}
+                  style={{ color: "white", marginRight: "4px" }}
+                />
+                <b>Filter</b>
+              </button>
+            </div>
             <div className="Main-top-bar left-bar">
               <p>view</p>
               <div
@@ -238,7 +257,6 @@ const ViewMore = () => {
           <div className="line"></div>
           <div className="Display-Cards">
             {isLoading ? (
-              // <div>Loading...</div>
               <CustomSkeleton2 />
             ) : filteredProducts.length === 0 ? (
               <div className="Display-Cards-NoData">
@@ -283,6 +301,107 @@ const ViewMore = () => {
         </div>
       </div>
       <BackToTopButton />
+      {show && (
+        <div className="sort-filter-container">
+          <div className="Close-Filter">
+            <button onClick={closeFilter}>
+              <FontAwesomeIcon icon={faClose} />
+            </button>
+          </div>
+          <div className="Filter-Sidebar">
+            <div className="Filter-box-Categories">
+              <h3>Categories</h3>
+              <ul>
+                <a href="#"> All Categories</a>
+                <li>
+                  <a href="#">
+                    <li>Mobiles</li>
+                  </a>
+                  <a href="#">
+                    <li>vehicles</li>
+                  </a>
+                  <a href="#">
+                    <li>Animals</li>
+                  </a>
+                  <a href="#">
+                    <li>Electronice Appliances</li>
+                  </a>
+                  <a href="#">
+                    <li>Kids</li>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="line"></div>
+            <div className="Filter-box-location">
+              <h3>LOCATION</h3>
+              <select className="select-in" name="" id="">
+                <option value="khi">Karachi</option>
+                <option value="fsd">Faisalabad</option>
+                <option value="lhr">Lahore</option>
+                <option value="Isl">Islamabad</option>
+              </select>
+            </div>
+            <div className="Filter-box-price">
+              <h3>PRICE</h3>
+              <p>Min Price: Rs {minPrice}</p>
+              <p>Max Price: Rs {maxPrice}</p>
+              <input
+                type="range"
+                name="minPrice"
+                value={minPrice}
+                onChange={handlePriceRangeChange}
+                min="0"
+                max="100000"
+              />
+              <input
+                type="range"
+                name="maxPrice"
+                value={maxPrice}
+                onChange={handlePriceRangeChange}
+                min="0"
+                max="1000000"
+              />
+            </div>
+          </div>
+          <div className=" Filter-cardsType">
+            <div
+              className="sort-filter-icon SFI"
+              onClick={() => toggleDisplayCard2()}
+            >
+              <FontAwesomeIcon icon={faBars} style={{ marginRight: "5px" }} />{" "}
+              LIST
+            </div>
+            <div
+              className="sort-filter-icon SFI "
+              onClick={() => toggleDisplayCard2()}
+            >
+              <FontAwesomeIcon icon={faFigma} style={{ marginRight: "5px" }} />
+              MOSAIC
+            </div>
+          </div>
+          <div className="line"></div>
+          <div className="Filter-list">
+            <select value={sortBy} onChange={handleSortChange}>
+              <option value="Newly listed">
+                <p>Newly listed</p>
+              </option>
+              <option value="Lowest price">Lowest price</option>
+              <option value="Highest price">Highest price</option>
+            </select>
+          </div>
+          <div className="line"></div>
+          <div className="sort-filter-button-close">
+            <button onClick={closeFilter}>
+              <FontAwesomeIcon
+                icon={faGears}
+                style={{ color: "white", marginRight: "4px" }}
+              />
+              <b>Apply Filter</b>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

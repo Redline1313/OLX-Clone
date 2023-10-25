@@ -34,4 +34,9 @@
     cursor: pointer;
     z-index: 1;
   }
+  @media screen and (max-width: 548px) {
+    .back-to-top-button.back-to-top-button.visible {
+      display: none;
+    }
+  }
 }
