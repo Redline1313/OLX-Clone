@@ -76,14 +76,19 @@
   justify-content: space-between;
   align-items: center;
 }
-.Main-top-bar-ads {
-  margin-bottom: 5px;
-  padding: 2px;
-}
+/* .Main-top-bar-ads {
+    margin-bottom: 5px;
+    padding: 2px;
+  } */
 .Main-top-bar-ads p {
+  padding: 5px;
   border-radius: 5px;
   background-color: #a7c0f5;
   font-size: small;
+}
+.Main-top-bar-ads b {
+  color: black;
+  font-weight: 1000;
 }
 .left-bar p {
   margin: 0 5px;
@@ -131,6 +136,7 @@
 .Display-Cards {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 .Display-Cards2 {
   margin-right: 10px;
@@ -144,10 +150,37 @@
 }
 .Display-Cards-NoData img {
   margin-top: 20px;
-  /* width: 40%; */
 }
 .highlighted {
   background-color: yellow;
   color: black;
   font-weight: bold;
+}
+@media screen and (max-width: 1320px) {
+  @media screen and (max-width: 1226px) {
+    .ViewMore-Wrapper {
+      margin: 40px;
+    }
+  }
+}
+@media screen and (max-width: 866px) {
+  .Container-ViewMore {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .Sidebar {
+    width: 100%;
+  }
+  .Main-Section {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 623px) {
+  .ViewMore-Wrapper {
+    margin: 10px;
+  }
+  .box-Sell {
+    display: none;
+  }
 }

@@ -89,3 +89,26 @@
   width: 100%;
   margin: 5px 0;
 }
+@media screen and (max-width: 460px) {
+  .card2-call-button,
+  .card2-chat-button {
+    display: none;
+  }
+  .card2-image {
+    background-color: black;
+    width: 100%;
+    max-width: 180px;
+    height: 180px;
+    object-fit: contain;
+
+    border-radius: 8px 0 0 8px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .card2-image {
+    width: 100%;
+    max-width: 100px;
+    height: 150px;
+    object-fit: contain;
+  }
+}

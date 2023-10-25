@@ -191,17 +191,9 @@ const ViewMore = () => {
               max="1000000"
             />
           </div>
-          {/* <div className="line"></div>
-          <div className="box-Brand">
-            <h3>BRAND</h3>
-          </div>
-          <div className="line"></div>
-          <div className="box-Condition">
-            <h3>CONDITION</h3>
-          </div> */}
           <div className="line"></div>
           <div className="box-Sell">
-            <a href="/add-item">
+            <a href="/category">
               <h4>Want to see your stuff here?</h4>
               <p>
                 Make some extra cash by selling things in your community. Go on,
@@ -215,7 +207,9 @@ const ViewMore = () => {
         <div className="Main-Section">
           <div className="Main-top-bar">
             <div className="Main-top-bar-ads">
-              <p>{numberOfAds} ads</p>
+              <p>
+                <b>{numberOfAds} ads</b>
+              </p>
             </div>
             <div className="Main-top-bar left-bar">
               <p>view</p>

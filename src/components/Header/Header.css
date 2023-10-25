@@ -302,7 +302,9 @@ select.select-input {
   display: none;
 }
 .sidebar {
-  height: 100%;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
   z-index: 1;
   display: none;
   background-color: white;
@@ -333,8 +335,7 @@ select.select-input {
   flex-direction: column;
   align-items: start;
 }
-
-@media screen and (max-width: 1258px) {
+@media screen and (max-width: 1280px) {
   .top-bar {
     font-size: 0.7em;
   }
@@ -363,7 +364,7 @@ select.select-input {
 
 @media screen and (max-width: 1130px) {
   .top-bar {
-    padding-left: 10px;
+    padding: 0;
   }
 
   .search-input-container {
@@ -444,7 +445,7 @@ select.select-input {
   }
   .top-icon-align {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   .search-input-container {
     display: flex;
