@@ -322,6 +322,8 @@ select.select-input {
   background-color: white;
   border: none;
   padding: 10px;
+  display: flex;
+  width: 99%;
 }
 .sidebar button:hover {
   background-color: #ffce32;
@@ -442,7 +444,7 @@ select.select-input {
   }
   .top-icon-align {
     display: flex;
-    /* justify-content: center; */
+    justify-content: space-between;
   }
   .search-input-container {
     display: flex;

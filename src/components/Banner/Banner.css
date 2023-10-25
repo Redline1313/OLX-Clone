@@ -11,3 +11,13 @@
   width: 100%;
   margin: 0 auto;
 }
+@media screen and (max-width: 690px) {
+  .Banner {
+    width: 100%;
+    margin: 0;
+  }
+  .slide img {
+    width: 100%;
+    margin: 0;
+  }
+}

@@ -31,12 +31,13 @@ import dropimg from "../../assets/drop.png";
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [user, setUser] = useState(null);
+
   const [showProfile, setProfile] = useState(false);
   const [showMegaMenu, setMegaMenu] = useState(false);
   const [loggingOut, setLoggingOut] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-
+  console.log(user);
   const navigate = useNavigate();
 
   const handleSearchSubmit = (event) => {
@@ -74,6 +75,7 @@ const Header = () => {
   const handleLogout = () => {
     setLoggingOut(true);
     auth.signOut();
+
     navigate("/");
   };
 

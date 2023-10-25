@@ -56,30 +56,30 @@ function Home() {
   const mobilePhoneProducts = products
     .slice(0, 8)
     .filter((product) => product.category === "Mobiles");
-  // const bikesProducts = products
-  //   .slice(0, 8)
-  //   .filter((product) => product.category === "Vehicles");
+  const bikesProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Vehicles");
   const housesProducts = products
     .slice(0, 8)
     .filter((product) => product.category === "Property for Sale");
-  // const rentProducts = products
-  //   .slice(0, 8)
-  //   .filter((product) => product.category === "Property for Rent");
-  // const homeAppliancesProducts = products
-  //   .slice(0, 8)
-  //   .filter((product) => product.category === "Electronics & Home Appliances");
+  const rentProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Property for Rent");
+  const homeAppliancesProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Electronics & Home Appliances");
   const animalProducts = products
     .slice(0, 8)
     .filter((product) => product.category === "Animals");
-  // const decorProducts = products
-  //   .slice(0, 8)
-  //   .filter((product) => product.category === "Furniture & Home Decor");
-  // const fashionProducts = products
-  //   .slice(0, 8)
-  //   .filter((product) => product.category === "Fashion & Beauty");
-  // const hobbiesProducts = products
-  //   .slice(0, 8)
-  //   .filter((product) => product.category === "Books, Sports & Hobbies");
+  const decorProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Furniture & Home Decor");
+  const fashionProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Fashion & Beauty");
+  const hobbiesProducts = products
+    .slice(0, 8)
+    .filter((product) => product.category === "Books, Sports & Hobbies");
 
   const kidsProducts = products
     .slice(0, 8)

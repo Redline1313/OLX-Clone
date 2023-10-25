@@ -5,15 +5,17 @@ import { db } from "../../config/firebase";
 import Cards from "../../components/Cards/Cards";
 import profileIMG from "../../assets/profile-img.png";
 import "./SellerProfile.css";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { CustomSkeleton } from "../../components/CustomSkeleton/CustomSkeleton";
 
 function SellerProfile() {
   const { uid } = useParams();
   const [sellerItems, setSellerItems] = useState([]);
-  const [username, setUsername] = useState("");
+  const [sellerUsername, setSellerUsername] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
   const location = useLocation();
   const currentURL = location.pathname;
@@ -35,6 +37,7 @@ function SellerProfile() {
           item.itemId = doc.id;
           itemsData.push(item);
         });
+        setIsLoading(false);
         setSellerItems(itemsData);
       } catch (error) {
         console.error("Error fetching seller's items:", error);
@@ -44,14 +47,17 @@ function SellerProfile() {
     const auth = getAuth();
 
     if (uid) {
-      const user = auth.currentUser;
-      if (user) {
-        setUsername(user.displayName);
+      if (!sellerUsername) {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setSellerUsername(user.displayName);
+          }
+        });
       }
     }
 
     fetchSellerItems();
-  }, [uid]);
+  }, [uid, sellerUsername]);
 
   const handleCopyToClipboard = () => {
     navigator.clipboard
@@ -116,22 +122,28 @@ function SellerProfile() {
       </div>
 
       <div className="seller-profile-items">
-        <h3>{username}</h3>
+        <h3>{sellerUsername}</h3>
         <div className="seller-profit-cards">
-          {sellerItems.map((item) => (
-            <div className="seller-cards">
-              <Cards
-                key={item.itemId}
-                itemId={item.itemId}
-                image={item.imageUrl}
-                price={item.price}
-                title={item.title}
-                brand={item.brand}
-                location={item.location}
-                timestamp={item.timestamp}
-              />
-            </div>
-          ))}
+          {isLoading
+            ? sellerItems.map((item) => (
+                <div className="seller-cards" key={item.itemId}>
+                  <CustomSkeleton />
+                </div>
+              ))
+            : sellerItems.map((item) => (
+                <div className="seller-cards" key={item.itemId}>
+                  <Cards
+                    key={item.itemId}
+                    itemId={item.itemId}
+                    image={item.imageUrl}
+                    price={item.price}
+                    title={item.title}
+                    brand={item.brand}
+                    location={item.location}
+                    timestamp={item.timestamp}
+                  />
+                </div>
+              ))}
         </div>
       </div>
     </div>

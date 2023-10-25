@@ -75,6 +75,8 @@
   .cat-card-area {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
   }
 
@@ -92,6 +94,14 @@
   }
 }
 @media screen and (max-width: 690px) {
+  .Product-List-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .ad-area {
+    padding: 0;
+  }
   .cat-area h2 {
     font-size: 20px;
   }
@@ -111,10 +121,14 @@
 }
 
 @media screen and (max-width: 483px) {
+  .cat-area,
+  .Mobile-area {
+    padding: 8px;
+  }
   .cat-card {
     margin: 20px;
     width: 100%;
-    max-width: 15%;
+    max-width: 30%;
     text-align: center;
   }
   .cat-card h4 {

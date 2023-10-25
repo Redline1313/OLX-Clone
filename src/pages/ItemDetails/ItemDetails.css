@@ -221,7 +221,7 @@
     border-radius: 5px;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
   .item-details-container {
     padding: 10px 50px;
   }
@@ -233,12 +233,23 @@
     width: 100%;
     padding: 0;
     background-color: black;
-    border: #002f34 1px solid;
+    border: none;
     border-radius: 5px;
     margin-bottom: 10px;
   }
   .ID-img-section img {
     width: 50%;
+  }
+  .ID-Section2,
+  .ID-Location,
+  .ID-price,
+  .ID-details,
+  .ID-description,
+  .ID-Profile {
+    margin-top: 10px;
+    border: none;
+    border-top: 1px solid gray;
+    border-radius: 1px;
   }
 }
 @media screen and (max-width: 425px) {
