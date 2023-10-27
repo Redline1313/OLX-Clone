@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Home.css";
@@ -22,8 +22,10 @@ import Cards from "../../components/Cards/Cards";
 import { Link } from "react-router-dom";
 import "react-loading-skeleton/dist/skeleton.css";
 import { CustomSkeleton } from "../../components/CustomSkeleton/CustomSkeleton";
+import { UserContext } from "../../App";
 
 function Home() {
+  const { name, setName } = useContext(UserContext);
   const [products, setProducts] = useState([]);
   // const limitedProducts = products.slice(0, 4);
   const [isLoading, setIsLoading] = useState(true);

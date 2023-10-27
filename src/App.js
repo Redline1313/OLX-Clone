@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home/index";
 import Footer from "./components/Footer/Footer";
@@ -16,26 +16,45 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import SellerProfile from "./pages/SellerProfile/SellerProfile";
-
+import { UserProvider } from "./ContextAPI/ContextAPI";
+import { auth } from "./config/firebase";
+export const UserContext = createContext();
 function App() {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        setName(authUser?.displayName);
+      } else {
+        setName(null);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
   return (
     <div className="App">
       <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5">
         <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/modal" element={<CustomModal />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/add-item" element={<AddItem />} />
-            <Route path="/item/:itemId" element={<ItemDetails />} />
-            <Route path="/ViewMore" element={<ViewMore />} />
-            <Route path="/ChangePassword" element={<ChangePassword />} />
-            <Route path="/category" element={<Category />} />
-            <Route path="/seller/:uid" element={<SellerProfile />} />
-          </Routes>
-          <Footer />
+          <UserContext.Provider value={{ name, setName }}>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/modal" element={<CustomModal />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/add-item" element={<AddItem />} />
+              <Route path="/item/:itemId" element={<ItemDetails />} />
+              <Route path="/ViewMore" element={<ViewMore />} />
+              <Route path="/ChangePassword" element={<ChangePassword />} />
+              <Route path="/category" element={<Category />} />
+              <Route path="/seller/:uid" element={<SellerProfile />} />
+            </Routes>
+            <Footer />
+          </UserContext.Provider>
         </BrowserRouter>
       </SkeletonTheme>
       <ToastContainer className="toast-position" position="bottom-right" />

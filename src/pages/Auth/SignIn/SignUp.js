@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../config/firebase";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
-
+import { UserContext } from "../../../App";
+import { useUser } from "../../../ContextAPI/ContextAPI";
 const SignUp = () => {
+  const { name, setName } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
 
+  const { username, setUsername } = useUser();
   const handleSignUp = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -22,6 +24,8 @@ const SignUp = () => {
       await updateProfile(userCredential.user, {
         displayName: username,
       });
+      setUsername(username);
+
       setSuccessMessage("You have successfully signed up!");
       navigate("/login");
     } catch (error) {

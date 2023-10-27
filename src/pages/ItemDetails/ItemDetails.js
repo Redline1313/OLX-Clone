@@ -13,7 +13,7 @@ function ItemDetails() {
   const { itemId } = useParams();
   const [itemDetails, setItemDetails] = useState(null);
   const [showPhoneNumber, setShowPhoneNumber] = useState(false);
-
+  console.log("itemDetails from itemDetails", itemDetails);
   useEffect(() => {
     window.scrollTo(0, 0);
     const fetchItemDetails = async () => {

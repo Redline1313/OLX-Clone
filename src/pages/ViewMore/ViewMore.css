@@ -150,7 +150,6 @@
   color: black;
   font-weight: bold;
 }
-/* //////////////\\\\\\\\\\\\\\\ */
 .sort-filter-button {
   display: none;
 }
@@ -161,6 +160,7 @@
   background-color: #002f34;
   border: none;
 }
+/* //////////////\\\\\\\\\\\\\\\ */
 
 .sort-filter-container {
   background-color: white;

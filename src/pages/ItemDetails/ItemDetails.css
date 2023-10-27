@@ -246,15 +246,13 @@
   .ID-details,
   .ID-description,
   .ID-Profile {
-    margin-top: 10px;
     border: none;
-    border-top: 1px solid gray;
-    border-radius: 1px;
   }
 }
 @media screen and (max-width: 425px) {
   .item-details-container {
     padding: 10px;
+    font-size: 13px;
   }
   .ID-img-section img {
     width: 70%;

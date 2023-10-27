@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { db, storage } from "../../config/firebase";
 import "./Additem.css";
@@ -7,9 +7,11 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import BackToTopButton from "../../components/BackToTopButton/BackToTopButton";
-import { Slide, ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useUser } from "../../ContextAPI/ContextAPI";
+import { UserContext } from "../../App";
 const conditionOptions = [
   "New",
   "Open Box",
@@ -24,7 +26,7 @@ const AddItem = () => {
 
   const queryParams = new URLSearchParams(location.search);
   const initialCategory = queryParams.get("category");
-
+  const { name, setName } = useContext(UserContext);
   const path = collection(db, "items");
   const [category, setCategory] = useState(initialCategory || "");
   const [title, setTitle] = useState("");
@@ -33,10 +35,10 @@ const AddItem = () => {
   const [condition, setCondition] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState(null);
+  const { username, setUsername } = useUser();
   const [locationInput, setLocation] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const [uid, setUid] = useState(null);
 
   useEffect(() => {
@@ -78,6 +80,7 @@ const AddItem = () => {
         location: locationInput,
         mobileNumber: mobileNumber,
         imageUrl: imageUrl,
+        username: name,
         timestamp: serverTimestamp(),
       });
       toast.success("Item added successfully!");
@@ -183,6 +186,18 @@ const AddItem = () => {
             required
           />
         </label>
+
+        <label className="form-label">
+          Username:
+          <input
+            className="form-input"
+            type="text"
+            value={name}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </label>
+
         <label className="form-label">
           Mobile Number:
           <input

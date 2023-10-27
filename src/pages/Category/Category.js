@@ -226,7 +226,6 @@ const Category = () => {
                   }
                 >
                   {category.label}
-                  {/* <FontAwesomeIcon icon={faArrowRight} /> */}
                 </button>
               </li>
             ))}
