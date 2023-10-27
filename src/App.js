@@ -16,7 +16,6 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import SellerProfile from "./pages/SellerProfile/SellerProfile";
-import { UserProvider } from "./ContextAPI/ContextAPI";
 import { auth } from "./config/firebase";
 export const UserContext = createContext();
 function App() {
